@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container class="pa-0" fluid>
     <nav>
       <v-toolbar class="primary" app>
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
@@ -17,30 +17,31 @@
         <v-btn
           style="color: white"
           outlined
-          flat
           @click="$router.push({ path: '/' })"
         >
           <span>Sair</span>
           <v-icon right>mdi-logout</v-icon>
         </v-btn>
       </v-toolbar>
-      <v-navigation-drawer v-model="drawer" class="secondary" app temporary>
-        <v-list nav class="mt-8">
-          <v-list-item
-            style="color: white"
-            v-for="item in items"
-            :key="item.title"
-            link
-          >
-            <v-list-item-icon>
-              <v-icon style="color: white">{{ item.icon }}</v-icon>
-            </v-list-item-icon>
+      <v-navigation-drawer v-model="drawer" class="secondary" app>
+        <v-container class="mt-12">
+          <v-list nav class="d-flex flex-column justify-center">
+            <v-list-item
+              style="color: white"
+              v-for="item in items"
+              :key="item.title"
+              link
+            >
+              <v-list-item-icon>
+                <v-icon style="color: white">{{ item.icon }}</v-icon>
+              </v-list-item-icon>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-container>
       </v-navigation-drawer>
     </nav>
   </v-container>
@@ -48,7 +49,7 @@
 <script>
 export default {
   data: () => ({
-    drawer: false,
+    drawer: true,
     items: [
       { title: "Veículos", icon: "mdi-truck-outline" },
       { title: "Usuários", icon: "mdi-account-group" },
